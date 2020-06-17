@@ -10,15 +10,15 @@ import gt.com.tigo.convenio.entities.ConvDiasVenci;
 import gt.com.tigo.convenio.repository.ConvDiasVenciRepository;
 
 @Service
-public class ConvDiasVenciImp implements ConvDiasVenciService{
-	
+public class ConvDiasVenciImp implements ConvDiasVenciService {
+
 	@Autowired
 	private ConvDiasVenciRepository repository;
 
 	@Override
-	public List<ConvDiasVenci> Listar() {
+	public List<ConvDiasVenci> listar() {
 		// TODO Auto-generated method stub
-		return (List<ConvDiasVenci>)repository.findAll();
+		return (List<ConvDiasVenci>) repository.findAll();
 	}
 
 	@Override
@@ -27,30 +27,37 @@ public class ConvDiasVenciImp implements ConvDiasVenciService{
 		ConvDiasVenci entity = new ConvDiasVenci();
 		entity.setDescripcion(convDiasVenci.getDescripcion());
 		entity.setValor(convDiasVenci.getValor());
-		
 		ConvDiasVenci entityDB = repository.save(entity);
-		
-		ConvDiasVenciDto response = new ConvDiasVenciDto(entityDB.getId(), entityDB.getDescripcion(), entityDB.getValor());
+		ConvDiasVenciDto response = new ConvDiasVenciDto(entityDB.getId(), entityDB.getDescripcion(),
+				entityDB.getValor());
 		return response;
 	}
 
 	@Override
-	public ConvDiasVenci Editar(ConvDiasVenci convDiasVenci) {
+	public ConvDiasVenciDto editar(ConvDiasVenciDto convDiasVenci) {
 		// TODO Auto-generated method stub
-		return repository.save(convDiasVenci);
+		ConvDiasVenci entity = new ConvDiasVenci();
+		entity.setId(convDiasVenci.getId());
+		entity.setDescripcion(convDiasVenci.getDescripcion());
+		entity.setValor(convDiasVenci.getValor());
+		ConvDiasVenci entityDB = repository.save(entity);
+		ConvDiasVenciDto response = new ConvDiasVenciDto(entityDB.getId(), entityDB.getDescripcion(),
+				entityDB.getValor());
+		return response;
 	}
+	
 
 	@Override
-	public void Eliminar(Long id) {
+	public void eliminar(Long id) {
 		// TODO Auto-generated method stub
 		repository.deleteById(id);
-		
+
 	}
 
 	@Override
-	public ConvDiasVenci ConvDiasVencifindById(Long id) {
+	public ConvDiasVenciDto ConvDiasVencifindById(Long id) {
 		// TODO Auto-generated method stub
-		return repository.findById(id).orElse(null);
+		return null;
 	}
 
 }

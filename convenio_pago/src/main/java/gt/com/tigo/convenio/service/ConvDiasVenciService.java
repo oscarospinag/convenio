@@ -8,13 +8,13 @@ import gt.com.tigo.convenio.entities.ConvDiasVenci;
 public interface ConvDiasVenciService {
 
 
-	List<ConvDiasVenci> Listar();
+	List<ConvDiasVenci> listar();
 	
 	ConvDiasVenciDto agregar(ConvDiasVenciDto convDiasVenci);
 	
-	ConvDiasVenci Editar(ConvDiasVenci convDiasVenci);
+	ConvDiasVenciDto editar(ConvDiasVenciDto convDiasVenci);
 	
-	void Eliminar (Long id);
+	void eliminar (Long id);
 	
-	ConvDiasVenci ConvDiasVencifindById(Long id);
+	ConvDiasVenciDto ConvDiasVencifindById(Long id);
 }
